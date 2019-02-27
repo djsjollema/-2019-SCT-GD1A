@@ -25,3 +25,6 @@ canvas.height = window.innerHeight;
 
 let myBlok = new Bloc(0,0,200,300);
 myBlok.draw();
+
+let myBlok2 = new Bloc(400,400,500,600);
+myBlok2.draw();
