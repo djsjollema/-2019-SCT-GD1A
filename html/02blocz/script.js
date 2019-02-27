@@ -5,7 +5,6 @@ class Bloc {
     this.x2 = x2;
     this.y2 = y2;
   }
-
   draw(){
     context.beginPath();
     context.fillStyle = "lightblue";
@@ -19,12 +18,16 @@ class Bloc {
 
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let myBlok = new Bloc(0,0,200,300);
+let myX = getRandomNumber(canvas.width);
+let myY = getRandomNumber(canvas.height);
+
+let myBlok = new Bloc(myX,myY,myX+100,myY+100);
 myBlok.draw();
 
-let myBlok2 = new Bloc(400,400,500,600);
-myBlok2.draw();
+
+function getRandomNumber(max){
+  return Math.floor(Math.random()*max);
+}
