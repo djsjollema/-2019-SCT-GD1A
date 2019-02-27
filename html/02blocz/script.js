@@ -21,13 +21,21 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let myX = getRandomNumber(canvas.width);
-let myY = getRandomNumber(canvas.height);
 
-let myBlok = new Bloc(myX,myY,myX+100,myY+100);
-myBlok.draw();
+
+
 
 
 function getRandomNumber(max){
   return Math.floor(Math.random()*max);
 }
+
+function animate(){
+  let myX = getRandomNumber(canvas.width);
+  let myY = getRandomNumber(canvas.height);
+  requestAnimationFrame(animate);
+  let myBlok = new Bloc(myX,myY,10,10);
+  myBlok.draw();
+}
+
+animate();
