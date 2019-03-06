@@ -9,6 +9,7 @@ class Bloc {
   draw(){
     context.beginPath();
     context.fillStyle = this.color;
+    console.log(this.color);
     context.strokeStyle = "blue";
     context.rect(this.x1,this.y1,this.x2,this.y2);
     context.closePath();
@@ -30,8 +31,7 @@ function animate(){
   let myX = getRandomNumber(canvas.width);
   let myY = getRandomNumber(canvas.height);
   requestAnimationFrame(animate);
-  let myColor = "'rgb(" + getRandomNumber(255) + "," + getRandomNumber(255) + "," + getRandomNumber(255) + ")'";
-  console.log(myColor);
+  let myColor = "rgb(" + getRandomNumber(255) + "," + getRandomNumber(255) + "," + getRandomNumber(255) + ")";
   let myBlok = new Bloc(myX,myY,10,10,myColor);
   myBlok.draw();
 }
