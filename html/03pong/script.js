@@ -24,12 +24,17 @@ canvas.height = window.innerHeight;
 let myBall = new Ball(100,100);
 myBall.draw(context);
 
+let speedX = 2;
+let speedY = 3;
+
 
 function animate(){
   window.requestAnimationFrame(animate);
+  context.clearRect(0,0,canvas.width,canvas.height);
   //console.log(positionX);
   myBall.draw(context);
-  myBall.x = myBall.x + 1;
+  myBall.x += speedX;
+  myBall.y += speedY;
 }
 
 animate();
