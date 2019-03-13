@@ -62,12 +62,14 @@ function animate(){
 animate();
 
 function keyHandler(evt){
-  console.log(evt.key);
   switch (evt.key) {
     case "w": left.y -= 5;
       break;
     case "s": left.y += 5;
       break;
+    case "ArrowUp": right.y -= 5;
+      break;
+    case "ArrowDown": right.y += 5;
     default:
 
   }
