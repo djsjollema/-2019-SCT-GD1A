@@ -1,3 +1,14 @@
+class Paddle {
+  constructor(x,y) {
+    this.x = x;
+    this.y = y
+  }
+  draw(context){
+    context.fillStyle = "black";
+    context.fillRect(this.x,this.y,20,200);
+  }
+}
+
 class Ball {
   constructor(x,y,r,color) {
     this.x = x;
@@ -27,6 +38,9 @@ let myBall = new Ball(100,100,20,"yellow");
 let v_x = 5;
 let v_y = 7;
 
+let left = new Paddle(20,100);
+let right = new Paddle(canvas.width-40,100)
+
 myBall.draw(context);
 
 function animate(){
@@ -41,6 +55,23 @@ function animate(){
   if(myBall.y < myBall.r || myBall.y > canvas.height - myBall.r){
     v_y = - v_y;
   }
+  left.draw(context);
+  right.draw(context);
 }
 
 animate();
+
+function keyHandler(evt){
+  console.log(evt.key);
+  switch (evt.key) {
+    case "w": left.y -= 5;
+      break;
+    case "s": left.y += 5;
+      break;
+    default:
+
+  }
+
+}
+
+window.addEventListener('keydown',keyHandler);
