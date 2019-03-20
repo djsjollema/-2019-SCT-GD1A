@@ -23,12 +23,17 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-
+let myBall = new Ball(getRandomNumber(canvas.width),getRandomNumber(canvas.height),20,"yellow");
 myBall.draw(context);
 
-function animate(){
-  requestAnimationFrame(animate);
-  context.clearRect(0,0,canvas.width,canvas.height);
-}
+// function animate(){
+//   requestAnimationFrame(animate);
+//   context.clearRect(0,0,canvas.width,canvas.height);
+//   myBall.draw(context);
+// }
 
-animate();
+//animate();
+
+function getRandomNumber(max){
+  return Math.floor(Math.random()*max);
+}
