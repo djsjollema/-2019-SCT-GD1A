@@ -46,15 +46,11 @@ function animate(){
   context.clearRect(0,0,canvas.width,canvas.height);
   for(let i=0; i<balls.length; i++){
     let myBall = balls[i];
-    //myBall.x += myBall.v_x;
     myBall.y += myBall.v_y;
-    // if(myBall.x <0 || myBall.x > canvas.width){
-    //   myBall.v_x = - myBall.v_x;
-    // }
-    // if(myBall.y <0 || myBall.y > canvas.height){
-    //   myBall.v_y = - myBall.v_y;
-    // }
     myBall.draw(context);
+    if(myBall.y > canvas.height){
+      balls.splice(i,1);
+    }
   }
 }
 animate();
