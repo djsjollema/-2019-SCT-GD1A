@@ -3,8 +3,8 @@ class Ball {
     this.x = x;
     this.y = y;
     this.r = r;
-    this.v_x = 1;
-    this.v_y = 1;
+    this.v_x = 0;
+    this.v_y = 6;
     this.color = color;
   }
 
@@ -27,27 +27,33 @@ canvas.height = window.innerHeight;
 
 let balls = [];
 
-for(let i= 0; i<100; i++){
-  let myBall = new Ball(getRandomNumber(canvas.width),getRandomNumber(canvas.height),5,"yellow");
-  balls.push(myBall);
-  myBall.draw(context);
-}
+// for(let i= 0; i<100; i++){
+//   let myBall = new Ball(getRandomNumber(canvas.width),getRandomNumber(canvas.height),5,"yellow");
+//   balls.push(myBall);
+//   myBall.draw(context);
+// }
 
 
 
 function animate(){
+  if(Math.random()<0.01){
+    let myBall = new Ball(getRandomNumber(canvas.width),-10,20,"yellow");
+    balls.push(myBall);
+    myBall.draw(context);
+  }
+
   requestAnimationFrame(animate);
   context.clearRect(0,0,canvas.width,canvas.height);
   for(let i=0; i<balls.length; i++){
     let myBall = balls[i];
-    myBall.x += myBall.v_x;
+    //myBall.x += myBall.v_x;
     myBall.y += myBall.v_y;
-    if(myBall.x <0 || myBall.x > canvas.width){
-      myBall.v_x = - myBall.v_x;
-    }
-    if(myBall.y <0 || myBall.y > canvas.height){
-      myBall.v_y = - myBall.v_y;
-    }
+    // if(myBall.x <0 || myBall.x > canvas.width){
+    //   myBall.v_x = - myBall.v_x;
+    // }
+    // if(myBall.y <0 || myBall.y > canvas.height){
+    //   myBall.v_y = - myBall.v_y;
+    // }
     myBall.draw(context);
   }
 }
