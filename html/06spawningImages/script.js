@@ -21,8 +21,12 @@ function animate(){
   requestAnimationFrame(animate);
   for(let i = 0; i< gameObjects.length;i++){
     let gameObject = gameObjects[i];
+
     gameObject.y += gameObject.v_y;
     context.drawImage(gameObject.image,gameObject.x,gameObject.y);
+    if(gameObject.y > canvas.height-100){
+      gameObjects.splice(i,1);
+    }
   }
 }
 
