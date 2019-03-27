@@ -36,7 +36,7 @@ let balls = [];
 
 
 function animate(){
-  if(Math.random()<0.01){
+  if(Math.random()<0.1){
     let myBall = new Ball(getRandomNumber(canvas.width),-10,20,"yellow");
     balls.push(myBall);
     myBall.draw(context);
@@ -48,7 +48,7 @@ function animate(){
     let myBall = balls[i];
     myBall.y += myBall.v_y;
     myBall.draw(context);
-    if(myBall.y > canvas.height){
+    if(myBall.y > canvas.height+10){
       balls.splice(i,1);
     }
   }
@@ -57,4 +57,18 @@ animate();
 
 function getRandomNumber(max){
   return Math.floor(Math.random()*max);
+}
+
+addEventListener('mousedown',mouseHandler);
+
+function mouseHandler(evt){
+  for(let i = 0; i<balls.length;i++){
+    let dx = balls[i].x - evt.clientX;
+    let dy = balls[i].y - evt.clientY;
+    let distance = Math.sqrt(dx*dx+dy*dy);
+    if(distance<20){
+      balls[i].color = "red";
+    }
+
+  }
 }
