@@ -8,9 +8,11 @@ let wheel = new Image();
 wheel.src = "rad_van_fortuin.png";
 
 let myRotation = 0;
-let speed =0;
+let speed =Math.random();;
 let result;
 let spinning = false;
+
+let requestID;
 
 let wheelValues = [];
 wheelValues.push("bankroet");
@@ -46,27 +48,32 @@ wheel.addEventListener('load',()=>{
 })
 
 function animate(){
+  requestID = window.requestAnimationFrame(animate);
   context.clearRect(0,0,canvas.width,canvas.height);
-  requestAnimationFrame(animate);
-  drawTriangle();
+
+
   context.translate(canvas.width/2,canvas.height/2);
   context.rotate(myRotation);
 
   context.drawImage(wheel,-wheel.width/2,-wheel.height/2,wheel.width,wheel.height);
   context.resetTransform();
+  drawTriangle();
   myRotation += speed;
   speed *= 0.99;
   if(speed<0.01){
+
     speed = 0;
+    window.cancelAnimationFrame(requestID);
     result = Math.round(myRotation%(2*Math.PI)/(2*Math.PI)*24);
     // console.log(result);
-    console.log(wheelValues [24-result]);
+    alert(wheelValues [24-result]);
     //console.log(myRotation%(2*Math.PI));
   }
 }
 
 addEventListener('mousedown',()=>{
   speed = Math.random();
+  requestID = window.requestAnimationFrame(animate);
 })
 
 function drawTriangle(){
@@ -75,7 +82,7 @@ function drawTriangle(){
   context.beginPath();
   context.moveTo(canvas.width/2-triangleWidth/2,canvas.height/2-wheel.height/2-triangleHeight);
   context.lineTo(canvas.width/2+triangleWidth/2,canvas.height/2-wheel.height/2-triangleHeight);
-  context.lineTo(canvas.width/2,canvas.height/2-wheel.height/2);
+  context.lineTo(canvas.width/2,canvas.height/2-wheel.height/2+10);
   context.closePath();
   context.fill();
 
